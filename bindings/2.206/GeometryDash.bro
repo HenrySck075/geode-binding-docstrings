@@ -6,17 +6,30 @@ class AccountHelpLayer : GJDropDownLayer, GJAccountDelegate, FLAlertLayerProtoco
 
 	static AccountHelpLayer* create();
 
+  /// Unlinks the account
 	void doUnlink();
+  /// Exits the layer
 	void exitLayer();
+  /// Account management button callback
 	void onAccountManagement(cocos2d::CCObject* sender);
+  /// Refresh login button callback 
 	void onReLogin(cocos2d::CCObject* sender);
+  /// Unlink account button callback
 	void onUnlink(cocos2d::CCObject* sender);
+  /// the
 	void updatePage();
+  /// idk probably the dialog itself
 	void verifyUnlink();
 
+  /// init chapter 2
 	virtual void customSetup() = win 0x7df90, m1 0xb9358, imac 0xd1910;
+  /// this looks like it would return bool tbh
 	virtual void layerHidden() = m1 0xba0e4, imac 0xd2740;
+  /// Get whether the account status changed
+  ///
+  /// Sounds obvious
 	virtual TodoReturn accountStatusChanged() = win 0x7e690, m1 0xb9f98, imac 0xd2600;
+  /// Overriden from FLAlertLayerProtocol
 	virtual void FLAlert_Clicked(FLAlertLayer*, bool) = win 0x7e970, m1 0xb9fa4, imac 0xd2630;
 
 	cocos2d::CCLabelBMFont* m_loginStatusLabel;
@@ -33,12 +46,21 @@ class AccountLayer : GJDropDownLayer, GJAccountDelegate, GJAccountBackupDelegate
 
 	static AccountLayer* create() = win 0x7bf70;
 
-	TodoReturn createToggleButton(gd::string, cocos2d::SEL_MenuHandler, bool, cocos2d::CCMenu*, cocos2d::CCPoint);
+  /// Creates a button that can be disabled, which makes it vanish from existence 
+  /// @param label The button's text
+  /// @param callback Button callback
+  /// @param enabled
+  /// @param menu The menu this button will be added to
+  /// @param position The button position
+  /// @returns idk, probably void
+	TodoReturn createToggleButton(gd::string label, cocos2d::SEL_MenuHandler callback, bool enabled, cocos2d::CCMenu* menu, cocos2d::CCPoint position);
+  /// Backups your data to the server
 	void doBackup() = win inline, m1 0xb82c4, imac 0xd06a0 {
 		this->updatePage(false);
 		if (!GJAccountManager::sharedState()->getAccountBackupURL()) this->backupAccountFailed((BackupAccountError)-1, 0);
 		else this->showLoadingUI();
 	}
+  /// Syncs your data from the server
 	void doSync() = win inline, m1 0xb83a0, imac 0xd0770 {
 		this->updatePage(false);
 		if (!GJAccountManager::sharedState()->getAccountSyncURL()) this->syncAccountFailed((BackupAccountError)-1, 0);
@@ -53,11 +75,17 @@ class AccountLayer : GJDropDownLayer, GJAccountDelegate, GJAccountBackupDelegate
 		this->toggleUI(true);
 		m_loadingCircle->setVisible(false);
 	}
+  /// Save data button callback
 	void onBackup(cocos2d::CCObject* sender) = win 0x7c9e0;
+  /// Help button callback
 	void onHelp(cocos2d::CCObject* sender) = win 0x7cfb0;
+  /// Login button callback
 	void onLogin(cocos2d::CCObject* sender) = win 0x7c820;
+  /// More account options button callback
 	void onMore(cocos2d::CCObject* sender) = win 0x7d0d0;
+  /// Register button callback
 	void onRegister(cocos2d::CCObject* sender) = win 0x7c860;
+  /// Load data button callack
 	void onSync(cocos2d::CCObject* sender) = win 0x7cd30;
 	void showLoadingUI() {
 		this->toggleUI(false);
@@ -67,13 +95,19 @@ class AccountLayer : GJDropDownLayer, GJAccountDelegate, GJAccountBackupDelegate
 		m_buttonMenu->setEnabled(enable);
 		this->setKeypadEnabled(enable);
 	}
+  /// Reloads layer content
 	void updatePage(bool) = win 0x7d130;
 
+  /// e
 	virtual void customSetup() = win 0x7c0d0, m1 0xb6d88, imac 0xcf0e0;
 	virtual void layerHidden() = win 0x7de20, m1 0xb8e88, imac 0xd12e0;
+  /// Called after the account backup operation finishes
 	virtual void backupAccountFinished() = win 0x7d500, m1 0xb8444, imac 0xd0830;
+  /// Called after the account backup operation fails
 	virtual void backupAccountFailed(BackupAccountError, int) = win 0x7d6b0, m1 0xb8604, imac 0xd09f0;
+  /// Called after the account sync operation finishes
 	virtual void syncAccountFinished() = win 0x7d9c0, m1 0xb8974, imac 0xd0da0;
+  /// Called after the account sync operation fails
 	virtual void syncAccountFailed(BackupAccountError, int) = win 0x7db80, m1 0xb8adc, imac 0xd0f20;
 	virtual TodoReturn accountStatusChanged() = win 0x7d120, m1 0xb8430, imac 0xd0800;
 	virtual void FLAlert_Clicked(FLAlertLayer*, bool) = win 0x7dd10, m1 0xb8d58, imac 0xd11c0;
