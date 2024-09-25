@@ -173,6 +173,9 @@ class AccountRegisterLayer : FLAlertLayer, TextInputDelegate, GJAccountRegisterD
 
 	cocos2d::extension::CCScale9Sprite* createTextBackground(cocos2d::CCPoint, cocos2d::CCSize);
 	CCTextInputNode* createTextInput(cocos2d::CCPoint, cocos2d::CCSize, gd::string, int);
+	/// what was he thinking about this
+	/// like why
+	/// @returns The created label
 	cocos2d::CCLabelBMFont* createTextLabel(cocos2d::CCPoint, gd::string, cocos2d::CCSize);
 	void disableNodes();
 	void hideLoadingUI();
@@ -183,9 +186,15 @@ class AccountRegisterLayer : FLAlertLayer, TextInputDelegate, GJAccountRegisterD
 	void showLoadingUI();
 	void toggleUI(bool);
 	void updateLabel(AccountError);
-	bool validEmail(gd::string);
-	bool validPassword(gd::string);
-	bool validUser(gd::string);
+	/// Verifies the email address
+	/// @returns Whether or not it is valid
+	bool validEmail(gd::string address);
+	/// Verifies the password
+	/// @returns Whether or not it is valid
+	bool validPassword(gd::string password);
+	/// Verifies the email address
+	/// @returns Whether or not it is valid
+	bool validUser(gd::string username);
 
 	virtual bool init() = m1 0x40293c, imac 0x49e910;
 	virtual void registerWithTouchDispatcher() = m1 0x4051d4, imac 0x4a1690;
