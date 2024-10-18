@@ -82,6 +82,19 @@ class cocos2d::CCEaseBounceOut {
 }
 
 [[link(win, android)]]
+class cocos2d::CCEaseBounceIn {
+	static cocos2d::CCEaseBounceIn* create(cocos2d::CCActionInterval*) = ios 0x27cb94;
+
+	// CCEaseBounceIn(cocos2d::CCEaseBounceIn const&);
+	// CCEaseBounceIn();
+
+	virtual cocos2d::CCObject* copyWithZone(cocos2d::CCZone*);
+	virtual void update(float);
+	virtual cocos2d::CCActionInterval* reverse();
+}
+
+
+[[link(win, android)]]
 class cocos2d::CCEaseElasticIn {
 	static cocos2d::CCEaseElasticIn* create(cocos2d::CCActionInterval*);
 	static cocos2d::CCEaseElasticIn* create(cocos2d::CCActionInterval*, float) = m1 0x4733fc, imac 0x51e0c0;
