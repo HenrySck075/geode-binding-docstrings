@@ -29,7 +29,7 @@ class AccountHelpLayer : GJDropDownLayer, GJAccountDelegate, FLAlertLayerProtoco
   ///
   /// Sounds obvious
 	virtual TodoReturn accountStatusChanged() = win 0x7e690, m1 0xb9f98, imac 0xd2600;
-  /// Overriden from FLAlertLayerProtocol
+  
 	virtual void FLAlert_Clicked(FLAlertLayer*, bool) = win 0x7e970, m1 0xb9fa4, imac 0xd2630;
 
 	cocos2d::CCLabelBMFont* m_loginStatusLabel;
@@ -110,6 +110,7 @@ class AccountLayer : GJDropDownLayer, GJAccountDelegate, GJAccountBackupDelegate
   /// Called after the account sync operation fails
 	virtual void syncAccountFailed(BackupAccountError, int) = win 0x7db80, m1 0xb8adc, imac 0xd0f20;
 	virtual TodoReturn accountStatusChanged() = win 0x7d120, m1 0xb8430, imac 0xd0800;
+  
 	virtual void FLAlert_Clicked(FLAlertLayer*, bool) = win 0x7dd10, m1 0xb8d58, imac 0xd11c0;
 
 	cocos2d::CCLabelBMFont* m_linkedAccountTitle;
@@ -131,8 +132,12 @@ class AccountLoginLayer : FLAlertLayer, TextInputDelegate, GJAccountLoginDelegat
 
 	static AccountLoginLayer* create(gd::string) = win 0x7a140;
 
+  // Creates a  
 	TodoReturn createTextBackground(cocos2d::CCPoint, char const*, cocos2d::CCSize);
-	TodoReturn createTextInput(cocos2d::CCPoint, cocos2d::CCSize, char const*, int);
+  /// Creates a CCTextInputNode
+  /// @param size Text input size 
+  /// @param placeholder
+	CCTextInputNode* createTextInput(cocos2d::CCPoint, cocos2d::CCSize size, char const* placeholder, int);
 	TodoReturn createTextLabel(cocos2d::CCPoint, char const*, cocos2d::CCSize);
 	void disableNodes();
 	void hideLoadingUI();
@@ -149,6 +154,7 @@ class AccountLoginLayer : FLAlertLayer, TextInputDelegate, GJAccountLoginDelegat
 
 	virtual void registerWithTouchDispatcher() = m1 0x407e04, imac 0x4a46b0;
 	virtual void keyBackClicked() = win 0x7b9b0, m1 0x407cb4, imac 0x4a4570;
+  
 	virtual void FLAlert_Clicked(FLAlertLayer*, bool) = win 0x7b560, m1 0x407aa0, imac 0x4a43b0;
 	virtual void textInputOpened(CCTextInputNode*) {}
 	virtual void textInputClosed(CCTextInputNode*) = win 0x7ba80, m1 0x407e3c, imac 0x4a46f0;
@@ -190,6 +196,7 @@ class AccountRegisterLayer : FLAlertLayer, TextInputDelegate, GJAccountRegisterD
 	virtual bool init() = m1 0x40293c, imac 0x49e910;
 	virtual void registerWithTouchDispatcher() = m1 0x4051d4, imac 0x4a1690;
 	virtual void keyBackClicked() = win 0x79600, m1 0x404fd0, imac 0x4a14c0;
+  
 	virtual void FLAlert_Clicked(FLAlertLayer*, bool) = win 0x78c10, m1 0x404b8c, imac 0x4a1010;
 	virtual void textInputOpened(CCTextInputNode*) {}
 	virtual void textInputClosed(CCTextInputNode*) = win 0x79760, m1 0x40520c, imac 0x4a16d0;
@@ -2059,6 +2066,7 @@ class ChallengesPage : FLAlertLayer, FLAlertLayerProtocol, GJChallengeDelegate, 
 	virtual void keyBackClicked() = win 0x85190, m1 0x32851c, imac 0x3a1730;
 	virtual void show() = win 0x84fb0, m1 0x328390, imac 0x3a1590;
 
+  
 	virtual void FLAlert_Clicked(FLAlertLayer*, bool) {}
 
 	virtual void challengeStatusFinished() = win 0x84690, m1 0x327ef8, imac 0x3a1090;
@@ -2118,6 +2126,7 @@ class CharacterColorPage : FLAlertLayer {
 	TodoReturn checkColor(int, UnlockType);
 	int colorForIndex(int) = imac 0x66b7a0;
 	void createColorMenu() = win 0x87600, ios 0x1300e8, m1 0x586a8c, imac 0x66ae50;
+  
 	void FLAlert_Clicked(FLAlertLayer*, bool);
 	cocos2d::CCPoint offsetForIndex(int) = imac 0x66ba10;
 	void onClose(cocos2d::CCObject* sender) = win 0x88f50;
@@ -2539,6 +2548,7 @@ class CommentCell : TableViewCell, LikeItemDelegate, FLAlertLayerProtocol {
 	virtual bool init() = win 0xb3770, m1 0x1fa3bc, imac 0x250990;
 	virtual void draw() = m1 0x1fa684, imac 0x250CB0;
 	virtual void likedItem(LikeItemType, int, bool) = win 0xb5ae0, m1 0x1fa730, imac 0x250d80;
+  
 	virtual void FLAlert_Clicked(FLAlertLayer*, bool) = win 0xb5d50, m1 0x1faaac, imac 0x251120;
 
 	cocos2d::CCSprite* m_iconSprite;
@@ -2595,6 +2605,7 @@ class CommunityCreditsPage : FLAlertLayer {
 		return nullptr;
 	}
 
+  
 	void FLAlert_Clicked(FLAlertLayer*, bool);
 	void goToPage(int) = win 0x94830, m1 0x2b00a0, imac 0x31f610;
 	void onClose(cocos2d::CCObject* sender) = win 0x82fc0, m1 0x2b0024, imac 0x31f5a0;
@@ -2732,6 +2743,7 @@ class CreateGuidelinesLayer : FLAlertLayer, FLAlertLayerProtocol {
 	virtual void registerWithTouchDispatcher() = m1 0x46b94c, imac 0x515630;
 	virtual void keyBackClicked() = win 0x99830, m1 0x46b6ac, imac 0x5153a0;
 	virtual void keyDown(cocos2d::enumKeyCodes) = win 0x999e0, m1 0x46b984, imac 0x515670;
+  
 	virtual void FLAlert_Clicked(FLAlertLayer*, bool) = win 0x99750, m1 0x46b5a0, imac 0x5152a0;
 	virtual void onClose(cocos2d::CCObject* sender) = win 0x82fc0, m1 0x46b670, imac 0x515370;
 	virtual void keyUp(cocos2d::enumKeyCodes) {}
@@ -3206,6 +3218,7 @@ class CustomSFXWidget : cocos2d::CCNode, MusicDownloadDelegate, FLAlertLayerProt
 	virtual void downloadSFXFinished(int) = win 0xbfc20, m1 0x516eb8, imac 0x5ee330;
 	virtual void downloadSFXFailed(int, GJSongError) = win 0xbfca0, m1 0x516f58, imac 0x5ee3d0;
 	virtual void songStateChanged() = win 0xbf570, m1 0x516e90, imac 0x5ee2c0;
+  
 	virtual void FLAlert_Clicked(FLAlertLayer*, bool) = win 0xbfda0, m1 0x517168, imac 0x5ee5b0;
 }
 
@@ -3376,6 +3389,7 @@ class CustomSongWidget : cocos2d::CCNode, MusicDownloadDelegate, FLAlertLayerPro
 	virtual void musicActionFinished(GJMusicAction) = win 0xca7c0, m1 0x54da5c, imac 0x62c930;
 	virtual void musicActionFailed(GJMusicAction) = win 0xca7f0, m1 0x54da9c, imac 0x62c990;
 	virtual void songStateChanged() = win 0xc87d0, m1 0x54c158, imac 0x62ad60;
+  
 	virtual void FLAlert_Clicked(FLAlertLayer*, bool) = win 0xcab60, m1 0x54db38, imac 0x62ca30;
 
 	SongInfoObject* m_songInfoObject;
@@ -3427,6 +3441,7 @@ class DailyLevelNode : cocos2d::CCNode, FLAlertLayerProtocol {
 	void showSkipButton() = win 0xcf600;
 	void updateTimeLabel(gd::string);
 
+  
 	virtual void FLAlert_Clicked(FLAlertLayer*, bool) = win 0xcf9a0, m1 0x1dc7fc, imac 0x22edd0;
 
 	GJGameLevel* m_level;
@@ -3463,6 +3478,7 @@ class DailyLevelPage : FLAlertLayer, FLAlertLayerProtocol, GJDailyLevelDelegate,
 	virtual void registerWithTouchDispatcher() = m1 0x1db5e0, imac 0x22dc60;
 	virtual void keyBackClicked() = m1 0x1db544, imac 0x22dbd0;
 	virtual void show() = win 0x84fb0, m1 0x1db3b8, imac 0x22da30;
+  
 	virtual void FLAlert_Clicked(FLAlertLayer*, bool) {}
 	virtual void dailyStatusFinished(GJTimedLevelType) = win 0xcc8d0, m1 0x1daa90, imac 0x22d0d0;
 	virtual void dailyStatusFailed(GJTimedLevelType, GJErrorCode) = win 0xccb90, m1 0x1dae7c, imac 0x22d510;
@@ -3785,6 +3801,7 @@ class EditLevelLayer : cocos2d::CCLayer, TextInputDelegate, FLAlertLayerProtocol
 	virtual void keyBackClicked() = win 0xd62d0, m1 0x1abb90, imac 0x1f8d50;
 	virtual void keyDown(cocos2d::enumKeyCodes) = win 0xd62e0, m1 0x1abb9c, imac 0x1f8d80;
 	virtual void setIDPopupClosed(SetIDPopup*, int) = win 0xd5db0, m1 0x1aba88, imac 0x1f8c50;
+  
 	virtual void FLAlert_Clicked(FLAlertLayer*, bool) = win 0xd5470, m1 0x1ab64c, imac 0x1f8800;
 	virtual void textInputOpened(CCTextInputNode*) = win 0xd4330, m1 0x1aacdc, imac 0x1f7e60;
 	virtual void textInputClosed(CCTextInputNode*) = win 0xd3d30, m1 0x1aa8b4, imac 0x1f79e0;
@@ -3897,6 +3914,7 @@ class EditorPauseLayer : CCBlockLayer, FLAlertLayerProtocol {
 	virtual void keyBackClicked() = win 0xdac80, m1 0x234290, imac 0x290db0;
 	virtual void keyDown(cocos2d::enumKeyCodes) = win 0xdac90, m1 0x234370, imac 0x290ea0;
 	virtual void customSetup() = win 0xd6d50, m1 0x23116c, imac 0x28d840, ios 0x3a5500;
+  
 	virtual void FLAlert_Clicked(FLAlertLayer*, bool) = win 0xdab60, m1 0x2341b4, imac 0x290cd0;
 
 	bool m_saved;
@@ -4198,6 +4216,7 @@ class EditorUI : cocos2d::CCLayer, FLAlertLayerProtocol, ColorSelectDelegate, GJ
 	virtual void keyDown(cocos2d::enumKeyCodes) = win 0x121300, m1 0x48e68, imac 0x50bf0;
 	virtual TodoReturn getUI() = win 0xdb4b0, m1 0x4c3cc, imac 0x54b00;
 	virtual void setIDPopupClosed(SetIDPopup*, int) = win 0xe3120, m1 0x338c4, imac 0x335e0;
+  
 	virtual void FLAlert_Clicked(FLAlertLayer*, bool) = win 0xe2f30, m1 0x336f4, imac 0x33450;
 	virtual void updateTransformControl() = win 0x1116f0, m1 0x3bda4, imac 0x40c50;
 	virtual void transformChangeBegin() = win 0x111be0, m1 0x3c65c, imac 0x41600;
@@ -4989,7 +5008,9 @@ class FLAlertLayer : cocos2d::CCLayerColor {
 
 [[link(android)]]
 class FLAlertLayerProtocol {
-	virtual void FLAlert_Clicked(FLAlertLayer*, bool) {}
+  /// Callback function for generic FLAlertLayer confirmation dialogs 
+  /// @params layer The FLAlertLayer calling this
+	virtual void FLAlert_Clicked(FLAlertLayer* layer, bool idk) {}
 }
 
 [[link(android)]]
@@ -5277,6 +5298,7 @@ class FollowRewardPage : FLAlertLayer, FLAlertLayerProtocol, GameRateDelegate, R
 	virtual void registerWithTouchDispatcher() = win 0x41750, m1 0x39e0c0, imac 0x42a7f0;
 	virtual void keyBackClicked() = win 0x82ff0, m1 0x39e044, imac 0x42a780;
 	virtual void show() = win 0x84fb0, m1 0x39de2c, imac 0x42a550;
+  
 	virtual void FLAlert_Clicked(FLAlertLayer*, bool) = win 0x138cc0, m1 0x39dfb0, imac 0x42a6d0;
 	virtual void rewardedVideoFinished() = win 0x137a30, m1 0x39de1c, imac 0x42a530;
 	virtual void updateRate() = win 0x137640, m1 0x39d754, imac 0x429e20;
@@ -5348,6 +5370,7 @@ class FRequestProfilePage : FLAlertLayer, FLAlertLayerProtocol, UploadActionDele
 
 	virtual void registerWithTouchDispatcher() = m1 0x6a53c0, imac 0x79d050;
 	virtual void keyBackClicked() = win 0x13a960, m1 0x6a53b4, imac 0x79d020;
+  
 	virtual void FLAlert_Clicked(FLAlertLayer*, bool) = win 0x13a740, m1 0x6a52a8, imac 0x79cf30;
 	virtual void onClosePopup(UploadActionPopup*) = win 0x13a970, m1 0x6a53f8, imac 0x79d090;
 	virtual void uploadActionFinished(int, int) = win 0x13a9c0, m1 0x6a5480, imac 0x79d100;
@@ -5384,6 +5407,7 @@ class FriendRequestPopup : FLAlertLayer, UploadActionDelegate, UploadPopupDelega
 	virtual void uploadActionFinished(int, int) = win 0x284de0, m1 0x243210, imac 0x2a1500;
 	virtual void uploadActionFailed(int, int) = win 0x284f90, m1 0x243404, imac 0x2a16d0;
 	virtual void onClosePopup(UploadActionPopup*) = win 0x285050, m1 0x24356c, imac 0x2a1820;
+  
 	virtual void FLAlert_Clicked(FLAlertLayer*, bool) = win 0x2850b0, m1 0x2436e8, imac 0x2a1990;
 }
 
@@ -9402,6 +9426,7 @@ class GJGarageLayer : cocos2d::CCLayer, TextInputDelegate, FLAlertLayerProtocol,
 	virtual void listButtonBarSwitchedPage(ListButtonBar*, int) = win 0xc1450, m1 0x2fc440, imac 0x370570;
 	virtual void showUnlockPopup(int, UnlockType) = win 0x265b30, m1 0x2fc598, imac 0x370700;
 	virtual void updateRate() = win 0x266800, m1 0x2fd218, imac 0x371380;
+  
 	virtual void FLAlert_Clicked(FLAlertLayer*, bool) = win 0x2663d0, m1 0x2fcfe0, imac 0x371110;
 	virtual void dialogClosed(DialogLayer*) = win 0x266630, m1 0x2fd0dc, imac 0x371220;
 	virtual void playerColorChanged() = win 0x265980, m1 0x2fc360, imac 0x370470;
@@ -9693,6 +9718,7 @@ class GJMessageCell : TableViewCell, FLAlertLayerProtocol, UploadPopupDelegate, 
 
 	virtual bool init() = win 0xb99b0, m1 0x1fd228, imac 0x254100;
 	virtual void draw() = m1 0x1fd510, imac 0x254410;
+  
 	virtual void FLAlert_Clicked(FLAlertLayer*, bool) = win 0xbb7d0, m1 0x1fd5bc, imac 0x2544e0;
 	virtual void uploadActionFinished(int, int) = win 0xbb970, m1 0x1fd720, imac 0x254670;
 	virtual void uploadActionFailed(int, int) = win 0xbbaf0, m1 0x1fd904, imac 0x254850;
@@ -9719,6 +9745,7 @@ class GJMessagePopup : FLAlertLayer, UploadActionDelegate, UploadPopupDelegate, 
 	virtual void uploadActionFinished(int, int) = win 0x2869c0, m1 0x2456b4, imac 0x2a3af0;
 	virtual void uploadActionFailed(int, int) = win 0x286b50, m1 0x24589c, imac 0x2a3cb0;
 	virtual void onClosePopup(UploadActionPopup*) = win 0x286c20, m1 0x245a0c, imac 0x2a3e00;
+  
 	virtual void FLAlert_Clicked(FLAlertLayer*, bool) = win 0x286ca0, m1 0x245b30, imac 0x2a3f00;
 }
 
@@ -9998,6 +10025,7 @@ class GJRequestCell : TableViewCell, FLAlertLayerProtocol, UploadPopupDelegate, 
 
 	virtual bool init() = m1 0x1fc704, imac 0x253360;
 	virtual void draw() = m1 0x1fc9e0, imac 0x253670;
+  
 	virtual void FLAlert_Clicked(FLAlertLayer*, bool) = win 0xba580, m1 0x1fca8c, imac 0x253740;
 	virtual void uploadActionFinished(int, int) = win 0xba730, m1 0x1fcc18, imac 0x253910;
 	virtual void uploadActionFailed(int, int) = win 0xba910, m1 0x1fce18, imac 0x253b10;
@@ -10287,6 +10315,7 @@ class GJScoreCell : TableViewCell, FLAlertLayerProtocol {
 
 	virtual bool init() = win 0xb2210, m1 0x1faca0, imac 0x251390;
 	virtual void draw() = m1 0x1faf40, imac 0x251650;
+  
 	virtual void FLAlert_Clicked(FLAlertLayer*, bool) = win 0xb7270, m1 0x1fae78, imac 0x251590;
 
 	GJUserScore* m_score;
