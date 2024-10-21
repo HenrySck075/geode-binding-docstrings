@@ -70,6 +70,19 @@ class cocos2d::CCEaseBackOut {
 }
 
 [[link(win, android)]]
+class cocos2d::CCEaseBackInOut {
+	static cocos2d::CCEaseBackInOut* create(cocos2d::CCActionInterval*) = ios 0x27cedc, m1 0x47495c, imac 0x51f5f0;
+
+	// CCEaseBackInOut(cocos2d::CCEaseBackInOut const&);
+	// CCEaseBackInOut();
+
+	virtual cocos2d::CCObject* copyWithZone(cocos2d::CCZone*) = ios 0x27cf6c;
+	virtual void update(float) = ios 0x27d034;
+	virtual cocos2d::CCActionInterval* reverse() = ios 0x27d06c;
+}
+
+
+[[link(win, android)]]
 class cocos2d::CCEaseBounceOut {
 	static cocos2d::CCEaseBounceOut* create(cocos2d::CCActionInterval*) = ios 0x27cb94;
 
@@ -93,6 +106,17 @@ class cocos2d::CCEaseBounceIn {
 	virtual cocos2d::CCActionInterval* reverse();
 }
 
+[[link(win, android)]]
+class cocos2d::CCEaseBounceInOut {
+	static cocos2d::CCEaseBounceInOut* create(cocos2d::CCActionInterval*) = ios 0x27cb94;
+
+	// CCEaseBounceInOut(cocos2d::CCEaseBounceInOut const&);
+	// CCEaseBounceInOut();
+
+	virtual cocos2d::CCObject* copyWithZone(cocos2d::CCZone*);
+	virtual void update(float);
+	virtual cocos2d::CCActionInterval* reverse();
+}
 
 [[link(win, android)]]
 class cocos2d::CCEaseElasticIn {
@@ -118,6 +142,19 @@ class cocos2d::CCEaseElasticOut {
 	virtual cocos2d::CCObject* copyWithZone(cocos2d::CCZone*);
 	virtual void update(float);
 	virtual cocos2d::CCActionInterval* reverse();
+}
+
+[[link(win, android)]]
+class cocos2d::CCEaseElasticInOut {
+	static cocos2d::CCEaseElasticInOut* create(cocos2d::CCActionInterval*) = imac 0x51e430, m1 0x473730;
+	static cocos2d::CCEaseElasticInOut* create(cocos2d::CCActionInterval*, float) = ios 0x27c6e0, imac 0x51e350, m1 0x473664;
+
+	// CCEaseElasticInOut(cocos2d::CCEaseElasticInOut const&);
+	// CCEaseElasticInOut();
+
+	virtual cocos2d::CCObject* copyWithZone(cocos2d::CCZone*) = ios 0x27c78c;
+	virtual void update(float) = ios 0x27c868;
+	virtual cocos2d::CCActionInterval* reverse() = ios 0x27c8fc;
 }
 
 [[link(win, android)]]
@@ -1800,6 +1837,15 @@ class cocos2d::CCSprite {
 
 	virtual void setTexture(cocos2d::CCTexture2D*) = m1 0x22b5c8, imac 0x2871d0, ios 0x249de0;
 	virtual cocos2d::CCTexture2D* getTexture() = m1 0x22b708, imac 0x287340, ios 0x249f20;
+}
+
+[[link(win, android)]]
+class cocos2d::CCBMFontConfiguration : CCObject {
+  CCBMFontConfiguration();
+  virtual ~CCBMFontConfiguration();
+  const char* description();
+  static CCBMFontConfiguration* create(const char* FNTfile);
+  
 }
 
 [[link(win, android)]]
